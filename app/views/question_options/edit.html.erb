@@ -1,6 +1,5 @@
-<h1>Editing question_option</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @question_option %> |
-<%= link_to 'Back', question_options_path %>
+<%- model_class = QuestionOption -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => QuestionOption %></h1>
+</div>
+<%= render :partial => 'form' %>

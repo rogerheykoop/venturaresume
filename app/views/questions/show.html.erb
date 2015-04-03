@@ -1,34 +1,32 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Question -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Question %></h1>
+</div>
 
-<p>
-  <strong>Name:</strong>
-  <%= @question.name %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:name) %></dt>
+      <dd><pre class="prettyprint"><%= @question.name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:label) %></dt>
+      <dd><pre class="prettyprint"><%= @question.label %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:explanation) %></dt>
+      <dd><pre class="prettyprint"><%= @question.explanation %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:default_value) %></dt>
+      <dd><pre class="prettyprint"><%= @question.default_value %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:mandatory) %></dt>
+      <dd><pre class="prettyprint"><%= @question.mandatory %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>Label:</strong>
-  <%= @question.label %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              questions_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_question_path(@question), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              question_path(@question),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Explanation:</strong>
-  <%= @question.explanation %>
-</p>
-
-<p>
-  <strong>Question type:</strong>
-  <%= @question.question_type %>
-</p>
-
-<p>
-  <strong>Default value:</strong>
-  <%= @question.default_value %>
-</p>
-
-<p>
-  <strong>Mandatory:</strong>
-  <%= @question.mandatory %>
-</p>
-
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>

@@ -1,35 +1,44 @@
-<h1>Listing questions</h1>
-
-<table>
+<%- model_class = Question -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Question %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Label</th>
-      <th>Explanation</th>
-      <th>Question type</th>
-      <th>Default value</th>
-      <th>Mandatory</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:label) %></th>
+      <th><%= model_class.human_attribute_name(:explanation) %></th>
+      <th><%= model_class.human_attribute_name(:default_value) %></th>
+      <th><%= model_class.human_attribute_name(:mandatory) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @questions.each do |question| %>
       <tr>
+        <td><%= question.id %></td>
         <td><%= question.name %></td>
         <td><%= question.label %></td>
         <td><%= question.explanation %></td>
-        <td><%= question.question_type %></td>
         <td><%= question.default_value %></td>
         <td><%= question.mandatory %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l question.created_at, format: :long %></td>
+        <td>
+          <%= link_to question_path(question), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to question_path(question), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Question', new_question_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_question_path,
+            :class => 'btn btn-primary' %>

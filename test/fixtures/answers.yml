@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  question_id: 
+  resume_id: 
+  user_id: 
+  include_in_print: false
+
+two:
+  question_id: 
+  resume_id: 
+  user_id: 
+  include_in_print: false

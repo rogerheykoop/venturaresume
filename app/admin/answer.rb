@@ -1,4 +1,5 @@
 ActiveAdmin.register Answer do
+  permit_params :include_in_print
 
 
   # See permitted parameters documentation:

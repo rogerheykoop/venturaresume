@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :question_types
+
   resources :question_options
 
   resources :answers do

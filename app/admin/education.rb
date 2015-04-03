@@ -1,4 +1,5 @@
 ActiveAdmin.register Education do
+  permit_params :education_name, :finished_with_certificate, :startdate, :enddate, :description
 
 
   # See permitted parameters documentation:

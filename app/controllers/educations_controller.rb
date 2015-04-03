@@ -29,6 +29,7 @@ class EducationsController < ApplicationController
   # POST /educations.json
   def create
     @education = Education.new(education_params)
+    @education.user = current_user
 
     respond_to do |format|
       if @education.save

@@ -1,0 +1,18 @@
+<%= simple_form_for(@education) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :resume %>
+    <%= f.association :user %>
+    <%= f.input :education_name %>
+    <%= f.input :finished_with_certificate %>
+    <%= f.input :startdate %>
+    <%= f.input :enddate %>
+    <%= f.association :school %>
+    <%= f.input :description %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

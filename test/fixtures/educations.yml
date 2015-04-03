@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  resume_id: 
+  user_id: 
+  education_name: MyString
+  finished_with_certificate: false
+  startdate: 2015-04-03 08:57:34
+  enddate: 2015-04-03 08:57:34
+  school_id: 
+  description: MyText
+
+two:
+  resume_id: 
+  user_id: 
+  education_name: MyString
+  finished_with_certificate: false
+  startdate: 2015-04-03 08:57:34
+  enddate: 2015-04-03 08:57:34
+  school_id: 
+  description: MyText

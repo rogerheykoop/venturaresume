@@ -1,4 +1,5 @@
 ActiveAdmin.register Address do
+  permit_params :department, :street, :housenumber, :housenumberextra, :zipcode, :city, :country, :telephone, :mobile, :email, :skype, :linkedin
 
 
   # See permitted parameters documentation:

@@ -1,6 +1,5 @@
-<h1>Editing reference</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @reference %> |
-<%= link_to 'Back', references_path %>
+<%- model_class = Reference -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => Reference %></h1>
+</div>
+<%= render :partial => 'form' %>

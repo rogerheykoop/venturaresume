@@ -1,33 +1,36 @@
-<h1>Listing references</h1>
-
-<table>
+<%- model_class = Reference -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Reference %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Company</th>
-      <th>Address</th>
-      <th>Education</th>
-      <th>Role</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:name) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @references.each do |reference| %>
       <tr>
+        <td><%= reference.id %></td>
         <td><%= reference.name %></td>
-        <td><%= reference.company %></td>
-        <td><%= reference.address %></td>
-        <td><%= reference.education %></td>
-        <td><%= reference.role %></td>
-        <td><%= link_to 'Show', reference %></td>
-        <td><%= link_to 'Edit', edit_reference_path(reference) %></td>
-        <td><%= link_to 'Destroy', reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l reference.created_at, format: :long %></td>
+        <td>
+          <%= link_to reference_path(reference), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to reference_path(reference), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Reference', new_reference_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_reference_path,
+            :class => 'btn btn-primary' %>

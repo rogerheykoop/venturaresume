@@ -1,18 +1,40 @@
-<%= simple_form_for(@education) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.association :resume %>
-    <%= f.association :user %>
-    <%= f.input :education_name %>
-    <%= f.input :finished_with_certificate %>
-    <%= f.input :startdate %>
-    <%= f.input :enddate %>
-    <%= f.association :school %>
-    <%= f.input :description %>
+<%= form_for @education, :html => { :class => 'form-horizontal form-model' } do |f| %>
+  <div class="form-group">
+    <%= f.label :education_name, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_field :education_name, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :finished_with_certificate, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.check_box :finished_with_certificate, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :startdate, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.datetime_select :startdate, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :enddate, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.datetime_select :enddate, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :description, :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.text_area :description, :class => 'text-field form-control' %>
+    </div>
   </div>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+  <div class="form-group">
+    <div class='col-md-offset-2 col-md-10'>
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  educations_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 <% end %>

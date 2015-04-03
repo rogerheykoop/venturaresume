@@ -1,39 +1,44 @@
-<h1>Listing educations</h1>
-
-<table>
+<%- model_class = Education -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Education %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Resume</th>
-      <th>User</th>
-      <th>Education name</th>
-      <th>Finished with certificate</th>
-      <th>Startdate</th>
-      <th>Enddate</th>
-      <th>School</th>
-      <th>Description</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:education_name) %></th>
+      <th><%= model_class.human_attribute_name(:finished_with_certificate) %></th>
+      <th><%= model_class.human_attribute_name(:startdate) %></th>
+      <th><%= model_class.human_attribute_name(:enddate) %></th>
+      <th><%= model_class.human_attribute_name(:description) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @educations.each do |education| %>
       <tr>
-        <td><%= education.resume %></td>
-        <td><%= education.user %></td>
+        <td><%= education.id %></td>
         <td><%= education.education_name %></td>
         <td><%= education.finished_with_certificate %></td>
         <td><%= education.startdate %></td>
         <td><%= education.enddate %></td>
-        <td><%= education.school %></td>
         <td><%= education.description %></td>
-        <td><%= link_to 'Show', education %></td>
-        <td><%= link_to 'Edit', edit_education_path(education) %></td>
-        <td><%= link_to 'Destroy', education, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l education.created_at, format: :long %></td>
+        <td>
+          <%= link_to education_path(education), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to education_path(education), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Education', new_education_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_education_path,
+            :class => 'btn btn-primary' %>

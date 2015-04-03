@@ -1,44 +1,32 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Education -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Education %></h1>
+</div>
 
-<p>
-  <strong>Resume:</strong>
-  <%= @education.resume %>
-</p>
+<div class="fieldset">
+  <dl>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:education_name) %></dt>
+      <dd><pre class="prettyprint"><%= @education.education_name %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:finished_with_certificate) %></dt>
+      <dd><pre class="prettyprint"><%= @education.finished_with_certificate %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:startdate) %></dt>
+      <dd><pre class="prettyprint"><%= @education.startdate %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:enddate) %></dt>
+      <dd><pre class="prettyprint"><%= @education.enddate %></pre></dd>
+      <dt class="label label-default"><%= model_class.human_attribute_name(:description) %></dt>
+      <dd><pre class="prettyprint"><%= @education.description %></pre></dd>
+  </dl>
+</div>
 
-<p>
-  <strong>User:</strong>
-  <%= @education.user %>
-</p>
+<div class="form-group">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              educations_path, :class => 'btn btn-default'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_education_path(@education), :class => 'btn btn-default' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              education_path(@education),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
 
-<p>
-  <strong>Education name:</strong>
-  <%= @education.education_name %>
-</p>
-
-<p>
-  <strong>Finished with certificate:</strong>
-  <%= @education.finished_with_certificate %>
-</p>
-
-<p>
-  <strong>Startdate:</strong>
-  <%= @education.startdate %>
-</p>
-
-<p>
-  <strong>Enddate:</strong>
-  <%= @education.enddate %>
-</p>
-
-<p>
-  <strong>School:</strong>
-  <%= @education.school %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @education.description %>
-</p>
-
-<%= link_to 'Edit', edit_education_path(@education) %> |
-<%= link_to 'Back', educations_path %>

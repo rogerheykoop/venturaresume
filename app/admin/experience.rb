@@ -1,4 +1,5 @@
 ActiveAdmin.register Experience do
+  permit_params :startdate, :enddate, :description
 
 
   # See permitted parameters documentation:

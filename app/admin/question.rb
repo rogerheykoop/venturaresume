@@ -1,4 +1,5 @@
 ActiveAdmin.register Question do
+  permit_params :name, :label, :explanation, :default_value, :mandatory
 
 
   # See permitted parameters documentation:

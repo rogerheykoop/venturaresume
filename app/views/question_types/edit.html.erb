@@ -1,6 +1,5 @@
-<h1>Editing question_type</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @question_type %> |
-<%= link_to 'Back', question_types_path %>
+<%- model_class = QuestionType -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => QuestionType %></h1>
+</div>
+<%= render :partial => 'form' %>
